@@ -69,9 +69,9 @@ while True:
                 elif newGameState[x, y] == 1:
                     pygame.draw.polygon(screen, (128, 255, 128), poly, 0)
                 elif newGameState[x, y] == 2:
-                    pygame.draw.polygon(screen, (255, 128, 128), poly, 0)
-                else:
                     pygame.draw.polygon(screen, (128, 128, 255), poly, 0)
+                else:
+                    pygame.draw.polygon(screen, (255, 128, 128), poly, 0)
 
     gameState = np.copy(newGameState)
 
