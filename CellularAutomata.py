@@ -37,7 +37,7 @@ y = 0
 
 rule = np.random.randint(256)
 print(rule)
-rules = list(np.binary_repr(30, width=8))
+rules = list(np.binary_repr(90, width=8))
 rules.reverse()
 
 
