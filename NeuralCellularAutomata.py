@@ -50,7 +50,7 @@ N_CHANNEL = 16
 HIDDEN_LAYER_NODES = 128
 width = height = int(math.sqrt(POOL_SIZE))
 BATCH_SIZE = 4
-SAVE_IMG = 5
+SAVE_IMG = 15
 n_img = 0
 
 # Define filters, Ojito con el shape para el conv2D
@@ -62,7 +62,7 @@ filters = [sobelX, sobelY, cellId]
 # Define ion functionality from math plot lib
 plt.ion()
 
-im = Image.open('diamond.png')
+im = Image.open('Images/diamond.png')
 target = torch.tensor(np.array(im) / 255.)
 updateGrid = UpdateGrid()
 
@@ -70,7 +70,7 @@ updateGrid = UpdateGrid()
 loss_function = nn.MSELoss()
 
 # Create stochastic gradient descent
-optimizer = opt.Adam(updateGrid.parameters(), lr=1e-4)
+optimizer = opt.Adam(updateGrid.parameters(), lr=2e-3)
 scheduler = opt.lr_scheduler.StepLR(optimizer, step_size=2000, gamma=0.1)
 
 # We normalize the gradient
@@ -115,5 +115,6 @@ for fit in range(10001):
     # Back propagation in one step
     loss.backward()
     optimizer.step()
+    scheduler.step()
 
     print('Training loss: ', loss)
